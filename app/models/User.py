@@ -3,6 +3,8 @@ from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import validates
 import bcrypt
 
+salt = bcrypt.gensalt()
+
 class User(Base):
   __tablename__ = 'users'
   id = Column(Integer, primary_key=True)
@@ -21,4 +23,5 @@ def validate_email(self, key, email):
 def validate_password(self, key, password):
   assert len(password) > 4
 
-  return password
+  # encrypt password
+  return bcrypt.hashpw(password.encode('utf-8'), salt)
