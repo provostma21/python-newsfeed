@@ -11,7 +11,7 @@ def signup():
   db = get_db()
 
   try:
-    # attempt at creating a new user
+    # attempt creating a new user
     newUser = User(
       username = data['username'],
       email = data['email'],
@@ -25,8 +25,8 @@ def signup():
 
     # insert failed, so rollback and send error to front end
     db.rollback()
-
-    session.clear()
-    session['user_id'] = newUser.id
-    session['loggedIn'] = True
     return jsonify(message = 'Signup failed'), 500
+  session.clear()
+  session['user_id'] = newUser.id
+  session['loggedIn'] = True
+  return jsonify(id = newUser.id)
