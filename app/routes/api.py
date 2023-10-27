@@ -20,4 +20,4 @@ def signup():
   db.add(newUser)
   db.commit()
 
-return jsonify(id = newUser.id)
+  return jsonify(id = newUser.id)
