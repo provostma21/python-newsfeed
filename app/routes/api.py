@@ -121,6 +121,7 @@ def create():
     db.add(newPost)
     db.commit()
   except:
+    # Prints error message and rolls back database if an error occurs
     print(sys.exc_info()[0])
 
     db.rollback()
