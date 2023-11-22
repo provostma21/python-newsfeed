@@ -5,6 +5,7 @@ from sqlalchemy.orm import sessionmaker
 from dotenv import load_dotenv
 from flask import g
 
+# loads encrypted data
 load_dotenv()
 
 # connect to database using env variable
